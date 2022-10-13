@@ -36,4 +36,16 @@ public class PatiensController {
         patiensService.deletePatiens(id);
     }
 
+    @PutMapping(path = "{id}")
+    public void updatePatiens(
+            @PathVariable("id") Long id,
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false) Long phone,
+            @RequestParam(required = false) Long cedula
+    ){
+        patiensService.updatePatiens(id, firstName, lastName, phone, cedula);
+    }
+
+
 }
