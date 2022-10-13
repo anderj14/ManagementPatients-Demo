@@ -31,4 +31,9 @@ public class PatiensController {
         patiensService.addPatiens(patiens);
     }
 
+    @DeleteMapping(path = "{id}")
+    public void deletePatiens(@PathVariable("id") Long id){
+        patiensService.deletePatiens(id);
+    }
+
 }

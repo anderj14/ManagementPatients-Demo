@@ -34,10 +34,20 @@ public class PatiensService {
         Optional<Patiens> patiensOptional = patiensRepository
                 .findPatiensByCedula(patiens.getCedula());
         if(patiensOptional.isPresent()){
-            throw new IllegalStateException("Email taken");
+            throw new IllegalStateException("Cedula taken");
         }
 
         patiensRepository.save(patiens);
+    }
+
+    // Removve patiens
+    public void deletePatiens(Long id){
+        boolean exists = patiensRepository.existsById(id);
+        if(!exists){
+            throw new IllegalStateException("Patiens with id " + id + " does not exists");
+        }
+
+        patiensRepository.deleteById(id);
     }
 
 
