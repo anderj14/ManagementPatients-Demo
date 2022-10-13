@@ -1,10 +1,7 @@
 package com.example.demo.patiens;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +17,7 @@ public class PatiensController {
     }
 
     @GetMapping
-    public List<Patiens> getPatiens(){
+    public List<Patiens> getPatiens(String keyword){
         return patiensService.getPatiens();
     }
 
@@ -28,4 +25,10 @@ public class PatiensController {
     public Patiens getPatien(@PathVariable Long id){
         return patiensService.getPatien(id);
     }
+
+    @PostMapping
+    public void addPatiens(@RequestBody Patiens patiens){
+        patiensService.addPatiens(patiens);
+    }
+
 }
